@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>js-jq-ajax-api-musica</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
+    <script src="js/script.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <script id="template-disco" type="text/x-handlebars-template">
+        <div class="cd" data-name= {{genre}}>
+          <img src={{poster}} alt="">
+          <h3>{{title}}</h3>
+          <span class="author">{{author}}</span>
+          <span class="year">{{year}}</span>
+        </div>
+    </script>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <img src="logo.svg" alt="logo">
+      </div>
+    </header>
+
+    <div class="genere">
+      <label for="genere-musicale">Scegli il genere musicale</label>
+      <select id="genere-musicale" name="genereMusicale">
+        <option value="0">Seleziona</option>
+        <option value="1">Pop</option>
+        <option value="2">Rock</option>
+        <option value="3">Metal</option>
+        <option value="4">Jazz</option>
+      </select>
+    </div>
+
+    <div id="cd" class="cds-container container">
+
+    </div>
+
+  </body>
+</html>
