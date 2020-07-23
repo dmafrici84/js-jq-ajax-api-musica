@@ -26,10 +26,8 @@ function init() {
         var array = data["response"];
 
         if (success) {
-          var genere = $("#genere-musicale > option");
-          console.log(genere);
-          genere.click(getGeneri(array));
           getDischi(array);
+          getGeneri();
         } else {
           console.log("errore");
         }
@@ -49,21 +47,39 @@ function init() {
       var compiled = Handlebars.compile(discoTemplate);
       var discotarget = $("#cd");
       for (var i = 0; i < arr.length; i++) {
-        var discoHtml = compiled({
-          "title": arr[i]["title"],
-          "poster": arr[i]["poster"],
-          "author": arr[i]["author"],
-          "year": arr[i]["year"],
-          "genre": arr[i]["genre"]
-        });
+        // var discoHtml = compiled({
+        //   "title": arr[i]["title"],
+        //   "poster": arr[i]["poster"],
+        //   "author": arr[i]["author"],
+        //   "year": arr[i]["year"],
+        //   "genre": arr[i]["genre"]
+        // });
+        var cds = arr[i];
+        var discoHtml = compiled(cds);
         discotarget.append(discoHtml);
       }
     }
 
-    function getGeneri(arr) {
-      console.log(arr);
-      var genereMusicale = $(this).value;
+    function getGeneri() {
+      var target = $("#genere-musicale");
+      target.change(genreChangeListener);
 
-      console.log(genereMusicale);
+    }
 
+    function genreChangeListener() {
+      var option = $(this);
+      var genre = option.val();
+      console.log("option",genre);
+      var cd = $(".cd");
+      var genereDischi = cd.data("name").toLowerCase();
+      console.log("data-name",genereDischi);
+      if (genre == "sel") {
+        cd.show();
+      } else {
+        if (genre == genereDischi) {
+          cd.show();
+        } else {
+          cd.hide();
+        }
+      }
     }
