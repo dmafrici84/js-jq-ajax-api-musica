@@ -21,17 +21,14 @@ function init() {
       url: "https://flynn.boolean.careers/exercises/api/array/music",
       method: "GET",
       success: function(data, state) {
-
         var success = data["success"];
         var array = data["response"];
-
         if (success) {
           getDischi(array);
           getGeneri();
         } else {
           console.log("errore");
         }
-
       },
       error: function(request, state, error) {
         console.log("request",request);
@@ -42,7 +39,6 @@ function init() {
   }
 
     function getDischi(arr) {
-
       var discoTemplate = $("#template-disco").html();
       var compiled = Handlebars.compile(discoTemplate);
       var discotarget = $("#cd");
@@ -63,23 +59,23 @@ function init() {
     function getGeneri() {
       var target = $("#genere-musicale");
       target.change(genreChangeListener);
-
     }
 
     function genreChangeListener() {
       var option = $(this);
       var genre = option.val();
-      console.log("option",genre);
-      var cd = $(".cd");
-      var genereDischi = cd.data("name").toLowerCase();
-      console.log("data-name",genereDischi);
-      if (genre == "sel") {
-        cd.show();
-      } else {
-        if (genre == genereDischi) {
+      var cds = $(".cd");
+      cds.each(function(){
+        cd= $(this);
+        var genereDischi = cd.data("name").toLowerCase();
+        if (genre == "sel") {
           cd.show();
         } else {
-          cd.hide();
+          if (genre == genereDischi) {
+            cd.show();
+          } else {
+            cd.hide();
+          }
         }
-      }
+      });
     }

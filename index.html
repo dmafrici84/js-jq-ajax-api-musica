@@ -3,10 +3,15 @@
   <head>
     <meta charset="utf-8">
     <title>js-jq-ajax-api-musica</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
-    <script src="js/script.js"></script>
+    <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Handlebars -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
+    <!-- Template -->
     <script id="template-disco" type="text/x-handlebars-template">
         <div class="cd" data-name="{{genre}}">
           <img src={{poster}} alt="">
@@ -15,6 +20,8 @@
           <span class="year">{{year}}</span>
         </div>
     </script>
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
   </head>
   <body>
     <header>
